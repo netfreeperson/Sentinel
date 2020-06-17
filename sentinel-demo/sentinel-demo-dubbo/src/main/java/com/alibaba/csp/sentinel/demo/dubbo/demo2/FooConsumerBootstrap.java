@@ -26,6 +26,7 @@ import com.alibaba.csp.sentinel.demo.dubbo.consumer.FooServiceConsumer;
 import com.alibaba.csp.sentinel.init.InitExecutor;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.SentinelRpcException;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.alibaba.dubbo.rpc.Result;
@@ -82,6 +83,7 @@ public class FooConsumerBootstrap {
         flowRule.setGrade(RuleConstant.FLOW_GRADE_THREAD);
         flowRule.setLimitApp("default");
         FlowRuleManager.loadRules(Collections.singletonList(flowRule));
+
     }
 
     private static void registerFallback() {
